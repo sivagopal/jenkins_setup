@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('build') {
       steps {
-	    pip install -r requirements.txt
+	    sh 'pip install -r requirements.txt'
       }
     }
     stage('test') {
       steps {
-	    ./test.py 
+	    sh 'python test.py'
       }   
     }
   }
