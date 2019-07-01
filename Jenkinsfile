@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh '/usr/local/bin/pip install -r requirements.txt'
+	sh 'python3 -m venv env'
+	sh 'source ./env/bin/activate'
+        sh 'pip install -r requirements.txt'
       }
     }
     stage('test') {
