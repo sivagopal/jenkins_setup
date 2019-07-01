@@ -3,12 +3,18 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh '/usr/local/bin/pip install -r requirements.txt'
+	sh """
+	    . .env/bin/activate
+	    pip install -r requirements.txt
+        """
       }
     }
     stage('test') {
       steps {
-        sh 'python test.py'
+	  sh """
+	    . .env/bin/activate
+	    ./test.py 
+          """
       }   
     }
   }
