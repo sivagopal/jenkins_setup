@@ -4,7 +4,7 @@ node ('master'){
       git 'https://github.com/sivagopal/jenkins_setup.git'
    }
    stage('Build') {
-      jrintMessage('Running pipeline')
+      printMessage('Running pipeline')
       sh '/usr/local/bin/pip install -r requirements.txt'
       sh 'python test.py'
       printMessage('Pipeline Complete')
