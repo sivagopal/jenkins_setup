@@ -5,7 +5,7 @@ node ('master'){
    }
    stage('Build') {
       printMessage('Running pipeline')
-      sh '/usr/local/bin/pip install -r requirements.txt'
+      sh '/usr/local/bin/pip install -r requirements.txt --user sivagopal'
       sh 'python test.py'
       printMessage('Pipeline Complete')
    }
