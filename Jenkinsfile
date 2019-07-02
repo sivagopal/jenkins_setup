@@ -1,15 +1,15 @@
-pipeline {
-  agent any 
-  stages {
-    stage('build') {
-      steps {
-        sh 'sudo pip install -r requirements.txt'
-      }
-    }
-    stage('test') {
-      steps {
-        sh 'python test.py'
-      }   
-    }
-  }
+node ('master'){
+   stage('Preparation') { // for display purposes
+      // Get some code from a GitHub repository
+      git 'https://github.com/sivagopal/jenkins_setup.git'
+   }
+   stage('Build') {
+      printMessage('Running pipeline')
+      sh '/usr/local/bin/pip install requirements.txt'
+      sh 'python test.py'
+      printMessage('Pipeline Complete')
+   }
+}
+def printMessage(message) {
+    echo "${message}"
 }
