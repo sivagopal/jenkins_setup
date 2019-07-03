@@ -8,14 +8,8 @@ pipeline {
     }
     stage('test') {
       steps {
-	sh 'virtualenv venv --distribute'
         sh 'python test.py'
       }
-      post {
-        always {
-	  junit 'test-reports/*.xml'
-        }
-      }    
     }
   }
 }
